@@ -10,7 +10,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import React from 'react';\n\n/**\n * TreeMenuFacetedNavigation\n */\nclass TreeMenuFacetedNavigation extends React.Component {\n\n  /**\n   * Constructor\n   */\n  constructor() {\n  }\n\n  /**\n   * this is sayHello description.\n   * @returns {string} this is return description.\n   */\n  /**\n   * render application\n   */\n  render(){\n    return (<div>TreeMenuFacetedNavigation</div>);\n  }\n}\n\nexport default TreeMenuFacetedNavigation;\n"
+    "content": "import React from 'react';\n\n/**\n * TreeMenuFacetedNavigation\n */\nclass TreeMenuFacetedNavigation extends React.Component {\n\n  /**\n   * Constructor\n   */\n  constructor() {\n  }\n\n  /**\n   * render application\n   */\n  render(){\n    return (<div>TreeMenuFacetedNavigation</div>);\n  }\n}\n\nexport default TreeMenuFacetedNavigation;\n"
   },
   {
     "__docId__": 1,
@@ -55,7 +55,7 @@
     "longname": "components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation#render",
     "access": null,
     "description": "render application",
-    "lineNumber": 21,
+    "lineNumber": 17,
     "params": [],
     "return": {
       "types": [
@@ -77,7 +77,7 @@
     "importPath": "react-tree-menu-faceted-navigation/components/TreeMenuFacetedNavigation.jsx",
     "importStyle": "treeMenuFacetedNavigation",
     "description": null,
-    "lineNumber": 26,
+    "lineNumber": 22,
     "undocument": true,
     "type": {
       "types": [
