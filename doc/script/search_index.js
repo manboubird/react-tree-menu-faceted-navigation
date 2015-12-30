@@ -1,14 +1,14 @@
 window.esdocSearchIndex = [
   [
-    "react-tree-menu-faceted-navigation/components/treemenufacetednavigation.jsx~treemenufacetednavigation",
-    "class/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation.html",
-    "<span>TreeMenuFacetedNavigation</span> <span class=\"search-result-import-path\">react-tree-menu-faceted-navigation/components/TreeMenuFacetedNavigation.jsx</span>",
+    "react-tree-menu-faceted-navigation/src/components/treemenufacetednavigation.jsx~treemenufacetednavigation",
+    "class/src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation.html",
+    "<span>TreeMenuFacetedNavigation</span> <span class=\"search-result-import-path\">react-tree-menu-faceted-navigation/src/components/TreeMenuFacetedNavigation.jsx</span>",
     "class"
   ],
   [
-    "react-tree-menu-faceted-navigation/components/treemenufacetednavigation.jsx~treemenufacetednavigation",
+    "react-tree-menu-faceted-navigation/src/components/treemenufacetednavigation.jsx~treemenufacetednavigation",
     "variable/index.html#static-variable-treeMenuFacetedNavigation",
-    "<span>treeMenuFacetedNavigation</span> <span class=\"search-result-import-path\">react-tree-menu-faceted-navigation/components/TreeMenuFacetedNavigation.jsx</span>",
+    "<span>treeMenuFacetedNavigation</span> <span class=\"search-result-import-path\">react-tree-menu-faceted-navigation/src/components/TreeMenuFacetedNavigation.jsx</span>",
     "variable"
   ],
   [
@@ -342,21 +342,33 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "components/treemenufacetednavigation.jsx",
-    "file/components/TreeMenuFacetedNavigation.jsx.html",
-    "components/TreeMenuFacetedNavigation.jsx",
+    "src/api.js",
+    "file/src/Api.js.html",
+    "src/Api.js",
     "file"
   ],
   [
-    "components/treemenufacetednavigation.jsx~treemenufacetednavigation#constructor",
-    "class/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation.html#instance-constructor-constructor",
-    "components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation#constructor",
+    "src/index.js",
+    "file/src/Index.js.html",
+    "src/Index.js",
+    "file"
+  ],
+  [
+    "src/components/treemenufacetednavigation.jsx",
+    "file/src/components/TreeMenuFacetedNavigation.jsx.html",
+    "src/components/TreeMenuFacetedNavigation.jsx",
+    "file"
+  ],
+  [
+    "src/components/treemenufacetednavigation.jsx~treemenufacetednavigation#constructor",
+    "class/src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation.html#instance-constructor-constructor",
+    "src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation#constructor",
     "method"
   ],
   [
-    "components/treemenufacetednavigation.jsx~treemenufacetednavigation#render",
-    "class/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation.html#instance-method-render",
-    "components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation#render",
+    "src/components/treemenufacetednavigation.jsx~treemenufacetednavigation#render",
+    "class/src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation.html#instance-method-render",
+    "src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation#render",
     "method"
   ]
 ]

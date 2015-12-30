@@ -3,7 +3,7 @@
   "expectCount": 4,
   "actualCount": 3,
   "files": {
-    "components/TreeMenuFacetedNavigation.jsx": {
+    "src/components/TreeMenuFacetedNavigation.jsx": {
       "expectCount": 4,
       "actualCount": 3,
       "undocumentLines": [

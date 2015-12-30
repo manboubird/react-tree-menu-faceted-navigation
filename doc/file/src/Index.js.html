@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">API Document</title>
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/Index.js | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -38,12 +38,40 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p><a href="https://travis-ci.org/manboubird/react-tree-menu-faceted-navigation"><img src="https://travis-ci.org/manboubird/react-tree-menu-faceted-navigation.svg?branch=develop" alt="Build Status"></a></p>
-<h2 id="react-tree-menu-faceted-navigation-component">React Tree Menu Faceted Navigation Component</h2>
-<p>A tree menu faceted navigation component for React.</p>
-<p><a href="http://www.oracle.com/webfolder/ux/applications/uxd/endeca/content/library/en/home/topics/faceted_navigation.html">Faceted Navigation</a> (aka. <a href="https://en.wikipedia.org/wiki/Faceted_search">Faceted Search </a>) allows users to explore a collection of information by applying multiple filters.</p>
-<h3 id="-demo-http-manboubird-github-io-react-tree-menu-faceted-navigation-"><a href="http://manboubird.github.io/react-tree-menu-faceted-navigation/">Demo</a></h3>
-</div>
+<div class="content" data-ice="content"><h1 data-ice="title">src/Index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+import { render } from &apos;react-dom&apos;;
+import TreeMenuFacetedNavigation from &apos;./Api&apos;;
+import packageJSON from &apos;../package.json&apos;;
+
+
+/**
+ * Application component
+ */
+const App = React.createClass({
+
+  /**
+   * render application
+   */
+  render() {
+    const name = packageJSON.name;
+    const header = `${name} ${packageJSON.version}`;
+    return (
+      &lt;div&gt;
+        &lt;header&gt;
+          &lt;h1&gt;{header}&lt;/h1&gt;
+        &lt;/header&gt;
+        &lt;section&gt;
+          {this.props.children || name}
+        &lt;/section&gt;
+      &lt;/div&gt;
+    )
+  }
+});
+
+render((&lt;App /&gt;), document.getElementById(&apos;content&apos;));
+</code></pre>
+
 </div>
 
 <footer class="footer">
