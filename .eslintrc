@@ -1,0 +1,27 @@
+{
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "ecmaFeatures": {
+    "modules": true,
+    "ecmascript": 6,
+    "jsx": true 
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "strict": 0,
+    "quotes": 0,
+    "no-console": 1,
+    "no-unused-vars": 0,
+    "camelcase": 0,
+    "no-underscore-dangle": 0 
+  }
+}
+
