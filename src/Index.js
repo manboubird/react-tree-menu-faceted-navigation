@@ -4,11 +4,17 @@ import TreeMenuFacetedNavigation from './Api';
 import packageJSON from '../package.json';
 
 
+/**
+ * Application component
+ */
 const App = React.createClass({
+
+  /**
+   * render application
+   */
   render() {
     const name = packageJSON.name;
     const header = `${name} ${packageJSON.version}`;
-
     return (
       <div>
         <header>

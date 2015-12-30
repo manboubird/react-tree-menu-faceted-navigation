@@ -5,6 +5,7 @@ import watchify from 'watchify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import eslint from 'gulp-eslint';
+import esdoc from 'gulp-esdoc';
 import babelify from 'babelify';
 import uglify from 'gulp-uglify';
 import rimraf from 'rimraf';
@@ -22,11 +23,13 @@ import ghPages from 'gulp-gh-pages';
 
 const paths = {
   bundle: 'bundle.js',
+  src: ['src'],
   srcJsx: 'src/Index.js',
   srcCss: 'src/**/*.css',
   srcLint: ['src/**/*.js', 'test/**/*.js'],
   dist: 'dist',
   distJs: 'dist/js',
+  distDoc: 'dist/doc',
   distDeploy: './dist/**/*'
 };
 
@@ -106,6 +109,15 @@ gulp.task('lint', () => {
 gulp.task('watchTask', () => {
   gulp.watch(paths.srcCss, ['styles']);
   gulp.watch(paths.srcJsx, ['lint']);
+});
+
+gulp.task('cleanDoc', cb => {
+  rimraf(paths.distDoc, cb);
+});
+
+gulp.task('doc',['cleanDoc'], function(cb) {
+  return gulp.src(paths.src)
+    .pipe(esdoc({ includes: ["\\.(js|jsx)$"], destination: paths.distDoc }));
 });
 
 gulp.task('deploy', function() {
