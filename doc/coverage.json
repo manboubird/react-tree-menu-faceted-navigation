@@ -1,6 +1,14 @@
 {
-  "coverage": "NaN%",
-  "expectCount": 0,
-  "actualCount": 0,
-  "files": {}
+  "coverage": "75%",
+  "expectCount": 4,
+  "actualCount": 3,
+  "files": {
+    "components/TreeMenuFacetedNavigation.jsx": {
+      "expectCount": 4,
+      "actualCount": 3,
+      "undocumentLines": [
+        26
+      ]
+    }
+  }
 }

@@ -1,5 +1,17 @@
 window.esdocSearchIndex = [
   [
+    "react-tree-menu-faceted-navigation/components/treemenufacetednavigation.jsx~treemenufacetednavigation",
+    "class/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation.html",
+    "<span>TreeMenuFacetedNavigation</span> <span class=\"search-result-import-path\">react-tree-menu-faceted-navigation/components/TreeMenuFacetedNavigation.jsx</span>",
+    "class"
+  ],
+  [
+    "react-tree-menu-faceted-navigation/components/treemenufacetednavigation.jsx~treemenufacetednavigation",
+    "variable/index.html#static-variable-treeMenuFacetedNavigation",
+    "<span>treeMenuFacetedNavigation</span> <span class=\"search-result-import-path\">react-tree-menu-faceted-navigation/components/TreeMenuFacetedNavigation.jsx</span>",
+    "variable"
+  ],
+  [
     "builtinexternal/ecmascriptexternal.js~array",
     "external/index.html",
     "BuiltinExternal/ECMAScriptExternal.js~Array",
@@ -330,15 +342,21 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "src/api.js",
-    "file/src/Api.js.html",
-    "src/Api.js",
+    "components/treemenufacetednavigation.jsx",
+    "file/components/TreeMenuFacetedNavigation.jsx.html",
+    "components/TreeMenuFacetedNavigation.jsx",
     "file"
   ],
   [
-    "src/index.js",
-    "file/src/Index.js.html",
-    "src/Index.js",
-    "file"
+    "components/treemenufacetednavigation.jsx~treemenufacetednavigation#constructor",
+    "class/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation.html#instance-constructor-constructor",
+    "components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation#constructor",
+    "method"
+  ],
+  [
+    "components/treemenufacetednavigation.jsx~treemenufacetednavigation#render",
+    "class/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation.html#instance-method-render",
+    "components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation#render",
+    "method"
   ]
 ]
