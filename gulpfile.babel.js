@@ -1,9 +1,12 @@
+import babel from 'babel-core/register';
 import gulp from 'gulp';
 import autoprefixer from 'autoprefixer';
 import browserify from 'browserify';
 import watchify from 'watchify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
+import gutil from 'gulp-util';
+import mocha from 'gulp-mocha';
 import eslint from 'gulp-eslint';
 import esdoc from 'gulp-esdoc';
 import babelify from 'babelify';
@@ -23,10 +26,12 @@ import ghPages from 'gulp-gh-pages';
 
 const paths = {
   bundle: 'bundle.js',
-  src: ['src'],
+  srcDir: ['src'],
+  src: ['src/**/*.js'],
   srcJsx: 'src/Index.js',
   srcCss: 'src/**/*.css',
   srcLint: ['src/**/*.js', 'test/**/*.js'],
+  srcTest: ['test/**/*.js'],
   dist: 'dist',
   distJs: 'dist/js',
   distDoc: 'dist/doc',
@@ -85,6 +90,18 @@ gulp.task('browserify', () => {
   .pipe(gulp.dest(paths.distJs));
 });
 
+gulp.task('mocha', function() {
+  return gulp.src(paths.srcTest, { read: false })
+    .pipe(mocha({}))
+    .on('error', gutil.log);
+});
+
+gulp.task('watchMocha', () => {
+  gulp.start('mocha');
+  gulp.watch(paths.srcTest, ['mocha']);
+  gulp.watch(paths.src, ['mocha']);
+});
+
 gulp.task('styles', () => {
   gulp.src(paths.srcCss)
   .pipe(sourcemaps.init())
@@ -116,7 +133,7 @@ gulp.task('cleanDoc', cb => {
 });
 
 gulp.task('doc',['cleanDoc'], function(cb) {
-  return gulp.src(paths.src)
+  return gulp.src(paths.srcDir)
     .pipe(esdoc({ includes: ["\\.(js|jsx)$"], destination: paths.distDoc }));
 });
 

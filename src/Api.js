@@ -1,6 +1,8 @@
-import TreeMenuFacetedNavigation from './components/TreeMenuFacetedNavigation.jsx';
+import TreeMenuFacetedNavigation from './components/TreeMenuFacetedNavigation';
 
 /**
- * @todo Impl.
+ * Export modulees 
  */
-module.exports = TreeMenuFacetedNavigation;
+module.exports = { 
+  TreeMenuFacetedNavigation: TreeMenuFacetedNavigation
+};
