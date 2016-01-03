@@ -108,14 +108,12 @@ class TreeMenuFacetedNavigation extends React.Component {
    */
   render(){
 
-    let dynamicTreeMenu = this._getPanel("dynamic Tree data", this._getTreeMenu());
+    let dynamicTreeMenu = this._getPanel("Faceted Tree Menu", this._getTreeMenu());
     return (
       <div>
-        <div>TreeMenuFacetedNavigation</div>
-
         <div className="row">
           <div className="col-lg-3">
-            <h2>Dynamic (Object)</h2>
+            <h2>Faceted Tree Menu</h2>
           </div>
         </div>
         <div className="row">
@@ -123,7 +121,6 @@ class TreeMenuFacetedNavigation extends React.Component {
             {dynamicTreeMenu}
           </div>
           <div className="col-lg-6">
-            <pre>{JSON.stringify(this.state.treeMenu, '  ', 2)}</pre>
             <pre>{JSON.stringify(this.state, '  ', 2)}</pre>
           </div>
         </div>
@@ -199,7 +196,6 @@ class TreeMenuFacetedNavigation extends React.Component {
     mutation[stateKeyData] = newState.toJS();
 
     this.setState(mutation);
-
   }
 
   /**
