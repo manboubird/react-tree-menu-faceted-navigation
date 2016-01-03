@@ -1,12 +1,17 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
+import fs from 'fs';
 import TreeMenuFacetedNavigation from '../../src/components/TreeMenuFacetedNavigation';
 
 describe('TreeMenuFacetedNavigation', () => {
 
+  const treeData = JSON.parse(fs.readFileSync('./example/treeData.json', 'utf8'));
+
   const shallowRenderer = TestUtils.createRenderer();
-  shallowRenderer.render(<TreeMenuFacetedNavigation />);
+
+  shallowRenderer.render(<TreeMenuFacetedNavigation data={treeData} />);
+
   const renderedOutput = shallowRenderer.getRenderOutput();
 
   it('should have a div as container', () => {

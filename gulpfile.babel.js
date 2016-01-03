@@ -29,7 +29,8 @@ const paths = {
   srcDir: ['src'],
   src: ['src/**/*.js'],
   srcJsx: 'src/Index.js',
-  srcCss: 'src/**/*.css',
+  srcCss: ['src/**/*.css'],
+  srcHtml: ['index.html'],
   srcLint: ['src/**/*.js', 'test/**/*.js'],
   srcTest: ['test/**/*.js'],
   dist: 'dist',
@@ -112,8 +113,8 @@ gulp.task('styles', () => {
 });
 
 gulp.task('htmlReplace', () => {
-  gulp.src('index.html')
-  .pipe(htmlReplace({css: 'styles/main.css', js: 'js/bundle.js'}))
+  gulp.src(paths.srcHtml)
+  .pipe(htmlReplace({css: 'styles/main.css', treeview: 'styles/tree-view.css', js: 'js/bundle.js'}))
   .pipe(gulp.dest(paths.dist));
 });
 

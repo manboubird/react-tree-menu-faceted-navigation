@@ -1,13 +1,23 @@
 import React from 'react';
 import { render } from 'react-dom';
-import TreeMenuFacetedNavigation from './Api';
+import Api, { TreeMenuFacetedNavigation } from './Api';
 import packageJSON from '../package.json';
+import TreeDataJSON from '../example/TreeData.json';
 
+
+// cosnt ReactFragment = [ TreeMenuFacetedNavigation ];
 
 /**
  * Application component
  */
-const App = React.createClass({
+class App extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      treeData: TreeDataJSON
+    };
+  }
 
   /**
    * render application
@@ -20,12 +30,13 @@ const App = React.createClass({
         <header>
           <h1>{header}</h1>
         </header>
-        <section>
-          {this.props.children || name}
-        </section>
+        <div>
+          <TreeMenuFacetedNavigation data={this.state.treeData} />
+        </div>
       </div>
     )
   }
-});
+}
 
-render((<App />), document.getElementById('content'));
+const Root = document.getElementById('content');
+render(<App />, Root);

@@ -1,0 +1,39 @@
+{
+  "meta": [
+    { "facet_id": "product", "panel_title": "Product" },
+    { "facet_id": "large-category", "panel_title": "Large Category" },
+    { "facet_id": "middle-category", "panel_title": "Middle Category" },
+    { "facet_id": "small-category", "panel_title": "Small Category" }
+  ],
+  "items": { 
+    "A": {
+      "large_1": {
+        "middle-3": {
+          "small-1": [],
+          "small-2": [ { "value": 4 }, { "value": 3} ]
+        }
+      },
+      "large_2": {
+        "middle-1": {
+          "small-1": [ { "value": 2 } ],
+          "small-2": [ { "value": 1 }, { "value": 3 } ]
+        },
+        "middle-2": {
+          "small-2": [ { "value": 3 } ]
+        }
+      }
+    },
+    "B": {
+      "large_1": {
+      },
+      "large_2": {
+        "middle-1": {
+          "small-1": [ { "value": 1 }, { "value": 3 } ]
+        },
+        "middle-2": {
+          "small-1": [ { "value": 1 } ]
+        }
+      }
+    }
+  }
+}
