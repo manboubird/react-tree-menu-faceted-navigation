@@ -1,13 +1,15 @@
 {
-  "coverage": "75%",
-  "expectCount": 4,
+  "coverage": "50%",
+  "expectCount": 6,
   "actualCount": 3,
   "files": {
-    "src/components/TreeMenuFacetedNavigation.jsx": {
-      "expectCount": 4,
+    "src/components/TreeMenuFacetedNavigation.js": {
+      "expectCount": 6,
       "actualCount": 3,
       "undocumentLines": [
-        22
+        96,
+        100,
+        251
       ]
     }
   }

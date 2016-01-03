@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/components/TreeMenuFacetedNavigation.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git://github.com/manboubird/react-tree-menu-faceted-navigation">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation.html">TreeMenuFacetedNavigation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-treeMenuFacetedNavigation">treeMenuFacetedNavigation</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/components/TreeMenuFacetedNavigation.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+import invariant from &apos;invariant&apos;;
+import _ from &apos;lodash&apos;;
+import Immutable from &apos;immutable&apos;;
+import TreeMenu, { TreeNode } from &apos;react-tree-menu&apos;;
+
+
+class FacetNavigationManager {
+
+  constructor(meta, items) {
+    let enabledCheckboxDepth = 3; // The depth shallower than this threshhold have checkbox
+    this.treeMenu = this._itemToTreeMenu(items, enabledCheckboxDepth);
+    // console.log(&quot;treeMenu&quot;, JSON.stringify(this.treeMenu, &apos;  &apos;, 2));
+  }
+
+  _itemToTreeMenu(items, checkboxEnabledDepth) {
+    let rootDepthCount = 1;
+    let options = {
+      checkboxEnabledDepth: checkboxEnabledDepth,
+      displayChildTotalValue: true
+    };
+    return this._createChildren(items, rootDepthCount, options);
+  }
+
+  /**
+   * Create tree menu data from facted navigation format data
+   * @param items 
+   * @param depth 
+   * @param options 
+   * @returns {*}
+   * @private
+   */
+  _createChildren(items, depth, options = {checkboxEnabledDepth: 1, displayChildTotalValue: true}) {
+    let isCheckboxEnabled = depth &lt;= options.checkboxEnabledDepth;
+    let children = {};
+    _.forEach(items, (value, key) =&gt; {
+      if(_.isArray(value)) {
+
+        let total = _.reduce([0].concat(_.pluck(value, &apos;value&apos;)),
+          (total, n) =&gt; { return total + n; }
+        );
+        let label = options.displayChildTotalValue ? `${key} (${total})` : key
+        children[key] = {
+          label: label,
+          childValueTotal: total
+        };
+        if(isCheckboxEnabled) {
+          children[key][&apos;checked&apos;] = true;
+          children[key][&apos;checkbox&apos;] = true;
+        }
+
+      } else if(_.isPlainObject(value)) {
+
+        let myChild = this._createChildren(value, depth + 1, options);
+        let total = _.reduce([0].concat(_.pluck(myChild, &apos;childValueTotal&apos;)), 
+          (total, n) =&gt; { return total + n; }
+        );
+        let label = options.displayChildTotalValue ? `${key} (${total})` : key
+        children[key] = {
+          children: myChild,
+          label: label,
+          childValueTotal: total
+        };
+        if(isCheckboxEnabled) {
+          children[key][&apos;checked&apos;] = true;
+          children[key][&apos;checkbox&apos;] = true;
+        }
+
+      } else {
+        invariant(_.isArray(value) || _.isPlainObject(value),
+                  &quot;Illegal items types&quot;);
+      }
+    });
+    return children;
+  }
+}
+
+/**
+ * TreeMenuFacetedNavigation
+ *
+ * @type {TreeMenuFacetedNavigation}
+ */
+class TreeMenuFacetedNavigation extends React.Component {
+
+  /**
+   * Constructor
+   */
+  constructor(props) {
+    super(props);
+
+    invariant(this.props.data.meta &amp;&amp; this.props.data.items,
+      &quot;Both meta and items props are expected in TreeMenuFacetedNavigation&quot;);
+
+    let {meta, items} = this.props.data;
+
+    this.naviMgr = new FacetNavigationManager(meta, items);
+
+    // console.log(&quot;treeMenu&quot;, JSON.stringify(this.naviMgr.treeMenu, &apos;  &apos;, 2));
+
+    this.state = {
+      mainTreeData: this.naviMgr.treeMenu,
+      mainTreeLastAction: {}
+    };
+  }
+
+  /**
+   * render application
+   */
+  render(){
+
+    let dynamicTreeMenu = this._getPanel(&quot;Faceted Tree Menu&quot;, this._getTreeMenu());
+    return (
+      &lt;div&gt;
+        &lt;div className=&quot;row&quot;&gt;
+          &lt;div className=&quot;col-lg-3&quot;&gt;
+            &lt;h2&gt;Faceted Tree Menu&lt;/h2&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div className=&quot;row&quot;&gt;
+          &lt;div className=&quot;col-lg-3&quot;&gt;
+            {dynamicTreeMenu}
+          &lt;/div&gt;
+          &lt;div className=&quot;col-lg-6&quot;&gt;
+            &lt;pre&gt;{JSON.stringify(this.state, &apos;  &apos;, 2)}&lt;/pre&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  _getTreeMenu() {
+    let stateKeyLastActionPrefix = &quot;mainTree&quot;;
+    let stateKeyData = &quot;mainTreeData&quot;;
+      //&lt;div
+    return (
+      &lt;TreeMenu
+        expandIconClass=&quot;fa fa-chevron-right&quot;
+        collapseIconClass=&quot;fa fa-chevron-down&quot;
+        onTreeNodeClick={this._setLastActionState.bind(this, &quot;clicked&quot;, stateKeyLastActionPrefix)}
+        onTreeNodeCollapseChange={this._handleTreeNodePropChange.bind(this, stateKeyLastActionPrefix, stateKeyData, &quot;collapsed&quot;)}
+        onTreeNodeCheckChange={this._handleTreeNodePropChange.bind(this, stateKeyLastActionPrefix, stateKeyData, &quot;checked&quot;)}
+        data={this.state.mainTreeData} /&gt;
+    );
+  }
+
+  /**
+   * 
+   * @private
+   */
+  _setLastActionState(action, stateKeyLastActionPrefix, lineage) {
+
+    let toggleEvents = [&quot;collapsed&quot;, &quot;checked&quot;, &quot;selected&quot;];
+
+    if (toggleEvents.indexOf(action) &gt;= 0) {
+      action += &quot;Changed&quot;;
+    }
+
+    let nodePath = lineage.join(&quot; &gt; &quot;);
+    console.log(&quot;Controller View received tree menu &quot; + action + &quot; action: &quot; + nodePath);
+
+    let lastActionKey = stateKeyLastActionPrefix + &quot;LastAction&quot;;
+
+    let mutation = {};
+    mutation[lastActionKey] = {
+      event: action,
+      node: nodePath,
+      time: new Date().getTime()
+    };
+
+    this.setState(mutation)
+  }
+
+  _handleTreeNodePropChange(stateKeyLastActionPrefix, stateKeyData, action, lineage) {
+
+    console.log(&quot;lineage &quot;, lineage);
+    this._setLastActionState(action, stateKeyLastActionPrefix, lineage);
+
+    let oldState = Immutable.fromJS(this.state[stateKeyData]),
+        nodePath = this._getNodePath(lineage),
+        keyPaths = [nodePath.concat([action])];
+
+    this._addChildKeys(oldState, nodePath, keyPaths, action);
+
+    //Get the new prop state
+    let newPropState = !oldState.getIn(keyPaths[0]);
+
+    //Now create a new map w/ all the changes
+    let newState = oldState.withMutations(function(state) {
+      keyPaths.forEach(function (keyPath) {
+        state.setIn(keyPath, newPropState);
+      })
+    });
+
+    let mutation = {};
+
+    mutation[stateKeyData] = newState.toJS();
+
+    this.setState(mutation);
+  }
+
+  /**
+   * Get a node path that includes children, given a key
+   * @private
+   */
+  _getNodePath(nodeKey) {
+    if (nodeKey.length === 1) return nodeKey;
+    return _(nodeKey).zip(nodeKey.map(() =&gt; {
+      return &quot;children&quot;;
+    })).flatten().initial().value();
+  }
+
+  /**
+   * Build a list of key paths for all children
+   * @private
+   */
+  _addChildKeys(state, parentPath, keyPaths, action) {
+    let childrenPath = parentPath.concat(&apos;children&apos;),
+        children = state.getIn(childrenPath);
+
+    if (!children || children.size === 0) return;
+
+    children.map((value, key) =&gt; {
+      keyPaths.push(childrenPath.concat([key, action]));
+      this._addChildKeys(state, childrenPath.concat([key]), keyPaths, action);
+    });
+  }
+
+  _getPanel(title, treeMenuNode) {
+    return (
+      &lt;div&gt;
+        &lt;div className=&quot;panel panel-default&quot;&gt;
+          &lt;div className=&quot;panel-heading&quot;&gt;{title + &quot; Menu&quot;}&lt;/div&gt;
+          &lt;div className=&quot;panel-body&quot;&gt;
+            {treeMenuNode}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+TreeMenuFacetedNavigation.propTypes = {
+  onTreeNodeClick:          React.PropTypes.func,
+  onTreeNodeCollapseChange: React.PropTypes.func,
+  onTreeNodeCheckChange:    React.PropTypes.func,
+  labelFilter:              React.PropTypes.func,
+  labelFactory:             React.PropTypes.func,
+  data:                     React.PropTypes.object
+}
+
+export default TreeMenuFacetedNavigation;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.3)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

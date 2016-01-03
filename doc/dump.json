@@ -10,7 +10,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import TreeMenuFacetedNavigation from './components/TreeMenuFacetedNavigation.jsx';\n\n/**\n * @todo Impl.\n */\nmodule.exports = TreeMenuFacetedNavigation;\n"
+    "content": "import TreeMenuFacetedNavigation from './components/TreeMenuFacetedNavigation';\n\n/**\n * Export modulees \n */\nmodule.exports = { \n  TreeMenuFacetedNavigation: TreeMenuFacetedNavigation\n};\n"
   },
   {
     "__docId__": 1,
@@ -23,11 +23,11 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import React from 'react';\nimport { render } from 'react-dom';\nimport TreeMenuFacetedNavigation from './Api';\nimport packageJSON from '../package.json';\n\n\n/**\n * Application component\n */\nconst App = React.createClass({\n\n  /**\n   * render application\n   */\n  render() {\n    const name = packageJSON.name;\n    const header = `${name} ${packageJSON.version}`;\n    return (\n      <div>\n        <header>\n          <h1>{header}</h1>\n        </header>\n        <section>\n          {this.props.children || name}\n        </section>\n      </div>\n    )\n  }\n});\n\nrender((<App />), document.getElementById('content'));\n"
+    "content": "import React from 'react';\nimport { render } from 'react-dom';\nimport Api, { TreeMenuFacetedNavigation } from './Api';\nimport packageJSON from '../package.json';\nimport TreeDataJSON from '../example/TreeData.json';\n\n\n// cosnt ReactFragment = [ TreeMenuFacetedNavigation ];\n\n/**\n * Application component\n */\nclass App extends React.Component {\n\n  constructor() {\n    super();\n    this.state = {\n      treeData: TreeDataJSON\n    };\n  }\n\n  /**\n   * render application\n   */\n  render() {\n    const name = packageJSON.name;\n    const header = `${name} ${packageJSON.version}`;\n    return (\n      <div>\n        <header>\n          <h1>{header}</h1>\n        </header>\n        <div>\n          <TreeMenuFacetedNavigation data={this.state.treeData} />\n        </div>\n      </div>\n    )\n  }\n}\n\nconst Root = document.getElementById('content');\nrender(<App />, Root);\n"
   },
   {
     "__docId__": 2,
-    "kind": "variable",
+    "kind": "class",
     "static": true,
     "variation": null,
     "name": "App",
@@ -38,7 +38,39 @@
     "importPath": "react-tree-menu-faceted-navigation",
     "importStyle": null,
     "description": "Application component",
-    "lineNumber": 10,
+    "lineNumber": 13,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 3,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/Index.js~App",
+    "longname": "src/Index.js~App#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 4,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "src/Index.js~App",
+    "longname": "src/Index.js~App#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
     "type": {
       "types": [
         "*"
@@ -46,62 +78,16 @@
     }
   },
   {
-    "__docId__": 3,
-    "kind": "file",
-    "static": true,
-    "variation": null,
-    "name": "src/components/TreeMenuFacetedNavigation.jsx",
-    "memberof": null,
-    "longname": "src/components/TreeMenuFacetedNavigation.jsx",
-    "access": null,
-    "description": null,
-    "lineNumber": 1,
-    "content": "import React from 'react';\n\n/**\n * TreeMenuFacetedNavigation\n */\nclass TreeMenuFacetedNavigation extends React.Component {\n\n  /**\n   * Constructor\n   */\n  constructor() {\n  }\n\n  /**\n   * render application\n   */\n  render(){\n    return (<div>TreeMenuFacetedNavigation</div>);\n  }\n}\n\nexport default TreeMenuFacetedNavigation;\n"
-  },
-  {
-    "__docId__": 4,
-    "kind": "class",
-    "static": true,
-    "variation": null,
-    "name": "TreeMenuFacetedNavigation",
-    "memberof": "src/components/TreeMenuFacetedNavigation.jsx",
-    "longname": "src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation",
-    "access": null,
-    "export": true,
-    "importPath": "react-tree-menu-faceted-navigation/src/components/TreeMenuFacetedNavigation.jsx",
-    "importStyle": "TreeMenuFacetedNavigation",
-    "description": "TreeMenuFacetedNavigation",
-    "lineNumber": 6,
-    "interface": false,
-    "extends": [
-      "react~React.Component"
-    ]
-  },
-  {
     "__docId__": 5,
-    "kind": "constructor",
-    "static": false,
-    "variation": null,
-    "name": "constructor",
-    "memberof": "src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation",
-    "longname": "src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation#constructor",
-    "access": null,
-    "description": "Constructor",
-    "lineNumber": 11,
-    "params": [],
-    "generator": false
-  },
-  {
-    "__docId__": 6,
     "kind": "method",
     "static": false,
     "variation": null,
     "name": "render",
-    "memberof": "src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation",
-    "longname": "src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation#render",
+    "memberof": "src/Index.js~App",
+    "longname": "src/Index.js~App#render",
     "access": null,
     "description": "render application",
-    "lineNumber": 17,
+    "lineNumber": 25,
     "params": [],
     "return": {
       "types": [
@@ -111,28 +97,511 @@
     "generator": false
   },
   {
-    "__docId__": 7,
+    "__docId__": 6,
     "kind": "variable",
     "static": true,
     "variation": null,
-    "name": "treeMenuFacetedNavigation",
-    "memberof": "src/components/TreeMenuFacetedNavigation.jsx",
-    "longname": "src/components/TreeMenuFacetedNavigation.jsx~treeMenuFacetedNavigation",
+    "name": "Root",
+    "memberof": "src/Index.js",
+    "longname": "src/Index.js~Root",
     "access": null,
-    "export": true,
-    "importPath": "react-tree-menu-faceted-navigation/src/components/TreeMenuFacetedNavigation.jsx",
-    "importStyle": "treeMenuFacetedNavigation",
+    "export": false,
+    "importPath": "react-tree-menu-faceted-navigation",
+    "importStyle": null,
     "description": null,
-    "lineNumber": 22,
+    "lineNumber": 41,
     "undocument": true,
     "type": {
       "types": [
-        "src/components/TreeMenuFacetedNavigation.jsx~TreeMenuFacetedNavigation"
+        "*"
       ]
     }
   },
   {
+    "__docId__": 7,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/TreeMenuFacetedNavigation.js",
+    "memberof": null,
+    "longname": "src/components/TreeMenuFacetedNavigation.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport invariant from 'invariant';\nimport _ from 'lodash';\nimport Immutable from 'immutable';\nimport TreeMenu, { TreeNode } from 'react-tree-menu';\n\n\nclass FacetNavigationManager {\n\n  constructor(meta, items) {\n    let enabledCheckboxDepth = 3; // The depth shallower than this threshhold have checkbox\n    this.treeMenu = this._itemToTreeMenu(items, enabledCheckboxDepth);\n    // console.log(\"treeMenu\", JSON.stringify(this.treeMenu, '  ', 2));\n  }\n\n  _itemToTreeMenu(items, checkboxEnabledDepth) {\n    let rootDepthCount = 1;\n    let options = {\n      checkboxEnabledDepth: checkboxEnabledDepth,\n      displayChildTotalValue: true\n    };\n    return this._createChildren(items, rootDepthCount, options);\n  }\n\n  /**\n   * Create tree menu data from facted navigation format data\n   * @param items \n   * @param depth \n   * @param options \n   * @returns {*}\n   * @private\n   */\n  _createChildren(items, depth, options = {checkboxEnabledDepth: 1, displayChildTotalValue: true}) {\n    let isCheckboxEnabled = depth <= options.checkboxEnabledDepth;\n    let children = {};\n    _.forEach(items, (value, key) => {\n      if(_.isArray(value)) {\n\n        let total = _.reduce([0].concat(_.pluck(value, 'value')),\n          (total, n) => { return total + n; }\n        );\n        let label = options.displayChildTotalValue ? `${key} (${total})` : key\n        children[key] = {\n          label: label,\n          childValueTotal: total\n        };\n        if(isCheckboxEnabled) {\n          children[key]['checked'] = true;\n          children[key]['checkbox'] = true;\n        }\n\n      } else if(_.isPlainObject(value)) {\n\n        let myChild = this._createChildren(value, depth + 1, options);\n        let total = _.reduce([0].concat(_.pluck(myChild, 'childValueTotal')), \n          (total, n) => { return total + n; }\n        );\n        let label = options.displayChildTotalValue ? `${key} (${total})` : key\n        children[key] = {\n          children: myChild,\n          label: label,\n          childValueTotal: total\n        };\n        if(isCheckboxEnabled) {\n          children[key]['checked'] = true;\n          children[key]['checkbox'] = true;\n        }\n\n      } else {\n        invariant(_.isArray(value) || _.isPlainObject(value),\n                  \"Illegal items types\");\n      }\n    });\n    return children;\n  }\n}\n\n/**\n * TreeMenuFacetedNavigation\n *\n * @type {TreeMenuFacetedNavigation}\n */\nclass TreeMenuFacetedNavigation extends React.Component {\n\n  /**\n   * Constructor\n   */\n  constructor(props) {\n    super(props);\n\n    invariant(this.props.data.meta && this.props.data.items,\n      \"Both meta and items props are expected in TreeMenuFacetedNavigation\");\n\n    let {meta, items} = this.props.data;\n\n    this.naviMgr = new FacetNavigationManager(meta, items);\n\n    // console.log(\"treeMenu\", JSON.stringify(this.naviMgr.treeMenu, '  ', 2));\n\n    this.state = {\n      mainTreeData: this.naviMgr.treeMenu,\n      mainTreeLastAction: {}\n    };\n  }\n\n  /**\n   * render application\n   */\n  render(){\n\n    let dynamicTreeMenu = this._getPanel(\"Faceted Tree Menu\", this._getTreeMenu());\n    return (\n      <div>\n        <div className=\"row\">\n          <div className=\"col-lg-3\">\n            <h2>Faceted Tree Menu</h2>\n          </div>\n        </div>\n        <div className=\"row\">\n          <div className=\"col-lg-3\">\n            {dynamicTreeMenu}\n          </div>\n          <div className=\"col-lg-6\">\n            <pre>{JSON.stringify(this.state, '  ', 2)}</pre>\n          </div>\n        </div>\n      </div>\n    );\n  }\n\n  _getTreeMenu() {\n    let stateKeyLastActionPrefix = \"mainTree\";\n    let stateKeyData = \"mainTreeData\";\n      //<div\n    return (\n      <TreeMenu\n        expandIconClass=\"fa fa-chevron-right\"\n        collapseIconClass=\"fa fa-chevron-down\"\n        onTreeNodeClick={this._setLastActionState.bind(this, \"clicked\", stateKeyLastActionPrefix)}\n        onTreeNodeCollapseChange={this._handleTreeNodePropChange.bind(this, stateKeyLastActionPrefix, stateKeyData, \"collapsed\")}\n        onTreeNodeCheckChange={this._handleTreeNodePropChange.bind(this, stateKeyLastActionPrefix, stateKeyData, \"checked\")}\n        data={this.state.mainTreeData} />\n    );\n  }\n\n  /**\n   * \n   * @private\n   */\n  _setLastActionState(action, stateKeyLastActionPrefix, lineage) {\n\n    let toggleEvents = [\"collapsed\", \"checked\", \"selected\"];\n\n    if (toggleEvents.indexOf(action) >= 0) {\n      action += \"Changed\";\n    }\n\n    let nodePath = lineage.join(\" > \");\n    console.log(\"Controller View received tree menu \" + action + \" action: \" + nodePath);\n\n    let lastActionKey = stateKeyLastActionPrefix + \"LastAction\";\n\n    let mutation = {};\n    mutation[lastActionKey] = {\n      event: action,\n      node: nodePath,\n      time: new Date().getTime()\n    };\n\n    this.setState(mutation)\n  }\n\n  _handleTreeNodePropChange(stateKeyLastActionPrefix, stateKeyData, action, lineage) {\n\n    console.log(\"lineage \", lineage);\n    this._setLastActionState(action, stateKeyLastActionPrefix, lineage);\n\n    let oldState = Immutable.fromJS(this.state[stateKeyData]),\n        nodePath = this._getNodePath(lineage),\n        keyPaths = [nodePath.concat([action])];\n\n    this._addChildKeys(oldState, nodePath, keyPaths, action);\n\n    //Get the new prop state\n    let newPropState = !oldState.getIn(keyPaths[0]);\n\n    //Now create a new map w/ all the changes\n    let newState = oldState.withMutations(function(state) {\n      keyPaths.forEach(function (keyPath) {\n        state.setIn(keyPath, newPropState);\n      })\n    });\n\n    let mutation = {};\n\n    mutation[stateKeyData] = newState.toJS();\n\n    this.setState(mutation);\n  }\n\n  /**\n   * Get a node path that includes children, given a key\n   * @private\n   */\n  _getNodePath(nodeKey) {\n    if (nodeKey.length === 1) return nodeKey;\n    return _(nodeKey).zip(nodeKey.map(() => {\n      return \"children\";\n    })).flatten().initial().value();\n  }\n\n  /**\n   * Build a list of key paths for all children\n   * @private\n   */\n  _addChildKeys(state, parentPath, keyPaths, action) {\n    let childrenPath = parentPath.concat('children'),\n        children = state.getIn(childrenPath);\n\n    if (!children || children.size === 0) return;\n\n    children.map((value, key) => {\n      keyPaths.push(childrenPath.concat([key, action]));\n      this._addChildKeys(state, childrenPath.concat([key]), keyPaths, action);\n    });\n  }\n\n  _getPanel(title, treeMenuNode) {\n    return (\n      <div>\n        <div className=\"panel panel-default\">\n          <div className=\"panel-heading\">{title + \" Menu\"}</div>\n          <div className=\"panel-body\">\n            {treeMenuNode}\n          </div>\n        </div>\n      </div>\n    );\n  }\n}\n\nTreeMenuFacetedNavigation.propTypes = {\n  onTreeNodeClick:          React.PropTypes.func,\n  onTreeNodeCollapseChange: React.PropTypes.func,\n  onTreeNodeCheckChange:    React.PropTypes.func,\n  labelFilter:              React.PropTypes.func,\n  labelFactory:             React.PropTypes.func,\n  data:                     React.PropTypes.object\n}\n\nexport default TreeMenuFacetedNavigation;\n"
+  },
+  {
+    "__docId__": 8,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "FacetNavigationManager",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~FacetNavigationManager",
+    "access": null,
+    "export": false,
+    "importPath": "react-tree-menu-faceted-navigation/src/components/TreeMenuFacetedNavigation.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "interface": false
+  },
+  {
     "__docId__": 9,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~FacetNavigationManager",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~FacetNavigationManager#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "params": [
+      {
+        "name": "meta",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "items",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 10,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "treeMenu",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~FacetNavigationManager",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~FacetNavigationManager#treeMenu",
+    "access": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 11,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_itemToTreeMenu",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~FacetNavigationManager",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~FacetNavigationManager#_itemToTreeMenu",
+    "access": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "params": [
+      {
+        "name": "items",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "checkboxEnabledDepth",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 12,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_createChildren",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~FacetNavigationManager",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~FacetNavigationManager#_createChildren",
+    "access": "private",
+    "description": "Create tree menu data from facted navigation format data",
+    "lineNumber": 33,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{*}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "items",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "depth",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 13,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "TreeMenuFacetedNavigation",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "access": null,
+    "export": true,
+    "importPath": "react-tree-menu-faceted-navigation/src/components/TreeMenuFacetedNavigation.js",
+    "importStyle": "TreeMenuFacetedNavigation",
+    "description": "TreeMenuFacetedNavigation",
+    "lineNumber": 83,
+    "type": {
+      "nullable": null,
+      "types": [
+        "TreeMenuFacetedNavigation"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 14,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#constructor",
+    "access": null,
+    "description": "Constructor",
+    "lineNumber": 88,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 15,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "naviMgr",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#naviMgr",
+    "access": null,
+    "description": null,
+    "lineNumber": 96,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 16,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 100,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 17,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#render",
+    "access": null,
+    "description": "render application",
+    "lineNumber": 109,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 18,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getTreeMenu",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#_getTreeMenu",
+    "access": null,
+    "description": null,
+    "lineNumber": 131,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 19,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_setLastActionState",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#_setLastActionState",
+    "access": "private",
+    "description": "",
+    "lineNumber": 150,
+    "params": [
+      {
+        "name": "action",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "stateKeyLastActionPrefix",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "lineage",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 20,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_handleTreeNodePropChange",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#_handleTreeNodePropChange",
+    "access": null,
+    "description": null,
+    "lineNumber": 173,
+    "undocument": true,
+    "params": [
+      {
+        "name": "stateKeyLastActionPrefix",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "stateKeyData",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "action",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "lineage",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 21,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getNodePath",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#_getNodePath",
+    "access": "private",
+    "description": "Get a node path that includes children, given a key",
+    "lineNumber": 205,
+    "params": [
+      {
+        "name": "nodeKey",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 22,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_addChildKeys",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#_addChildKeys",
+    "access": "private",
+    "description": "Build a list of key paths for all children",
+    "lineNumber": 216,
+    "params": [
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "parentPath",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "keyPaths",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "action",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 23,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getPanel",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation#_getPanel",
+    "access": null,
+    "description": null,
+    "lineNumber": 228,
+    "undocument": true,
+    "params": [
+      {
+        "name": "title",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "treeMenuNode",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 24,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "treeMenuFacetedNavigation",
+    "memberof": "src/components/TreeMenuFacetedNavigation.js",
+    "longname": "src/components/TreeMenuFacetedNavigation.js~treeMenuFacetedNavigation",
+    "access": null,
+    "export": true,
+    "importPath": "react-tree-menu-faceted-navigation/src/components/TreeMenuFacetedNavigation.js",
+    "importStyle": "treeMenuFacetedNavigation",
+    "description": null,
+    "lineNumber": 251,
+    "undocument": true,
+    "type": {
+      "types": [
+        "src/components/TreeMenuFacetedNavigation.js~TreeMenuFacetedNavigation"
+      ]
+    }
+  },
+  {
+    "__docId__": 26,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -145,7 +614,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 10,
+    "__docId__": 27,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -158,7 +627,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 11,
+    "__docId__": 28,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -171,7 +640,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 12,
+    "__docId__": 29,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -184,7 +653,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 13,
+    "__docId__": 30,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -197,7 +666,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 14,
+    "__docId__": 31,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -210,7 +679,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 15,
+    "__docId__": 32,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -223,7 +692,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 16,
+    "__docId__": 33,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -236,7 +705,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 17,
+    "__docId__": 34,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -249,7 +718,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 18,
+    "__docId__": 35,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -262,7 +731,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 19,
+    "__docId__": 36,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -275,7 +744,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 20,
+    "__docId__": 37,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -288,7 +757,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 21,
+    "__docId__": 38,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -301,7 +770,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 22,
+    "__docId__": 39,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -314,7 +783,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 23,
+    "__docId__": 40,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -327,7 +796,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 24,
+    "__docId__": 41,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -340,7 +809,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 25,
+    "__docId__": 42,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -353,7 +822,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 26,
+    "__docId__": 43,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -366,7 +835,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 27,
+    "__docId__": 44,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -379,7 +848,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 28,
+    "__docId__": 45,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -392,7 +861,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 29,
+    "__docId__": 46,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -405,7 +874,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 30,
+    "__docId__": 47,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -418,7 +887,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 31,
+    "__docId__": 48,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -431,7 +900,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 32,
+    "__docId__": 49,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -444,7 +913,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 33,
+    "__docId__": 50,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -457,7 +926,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 34,
+    "__docId__": 51,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -470,7 +939,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 35,
+    "__docId__": 52,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -483,7 +952,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 36,
+    "__docId__": 53,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -496,7 +965,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 37,
+    "__docId__": 54,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -509,7 +978,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 38,
+    "__docId__": 55,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -522,7 +991,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 39,
+    "__docId__": 56,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -535,7 +1004,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 40,
+    "__docId__": 57,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -548,7 +1017,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 41,
+    "__docId__": 58,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -561,7 +1030,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 42,
+    "__docId__": 59,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -574,7 +1043,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 43,
+    "__docId__": 60,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -587,7 +1056,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 44,
+    "__docId__": 61,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -600,7 +1069,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 45,
+    "__docId__": 62,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -613,7 +1082,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 46,
+    "__docId__": 63,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -626,7 +1095,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 47,
+    "__docId__": 64,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -639,7 +1108,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 48,
+    "__docId__": 65,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -652,7 +1121,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 49,
+    "__docId__": 66,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -665,7 +1134,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 50,
+    "__docId__": 67,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -678,7 +1147,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 51,
+    "__docId__": 68,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -691,7 +1160,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 52,
+    "__docId__": 69,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -704,7 +1173,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 53,
+    "__docId__": 70,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -717,7 +1186,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 54,
+    "__docId__": 71,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -730,7 +1199,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 55,
+    "__docId__": 72,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -743,7 +1212,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 57,
+    "__docId__": 74,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -756,7 +1225,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 58,
+    "__docId__": 75,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -769,7 +1238,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 59,
+    "__docId__": 76,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -782,7 +1251,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 60,
+    "__docId__": 77,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -795,7 +1264,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 61,
+    "__docId__": 78,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -808,7 +1277,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 62,
+    "__docId__": 79,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -821,7 +1290,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 63,
+    "__docId__": 80,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -834,7 +1303,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 64,
+    "__docId__": 81,
     "kind": "external",
     "static": true,
     "variation": null,
