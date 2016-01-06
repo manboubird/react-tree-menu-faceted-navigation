@@ -73,7 +73,8 @@
     "watchify": "^3.6.1"
   },
   "scripts": {
-    "test": "mocha --reporter nyan --compilers js:babel-core/register --recursive"
+    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register",
+    "test:watch": "npm run test -- --watch"
   },
   "browserify": {
     "transform": [

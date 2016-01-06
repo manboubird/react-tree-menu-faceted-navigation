@@ -86,7 +86,7 @@ gulp.task('browserify', () => {
   .pipe(source(paths.bundle))
   .pipe(buffer())
   .pipe(sourcemaps.init({loadMaps: true}))
-  .pipe(uglify())
+  .pipe(uglify({preserveComments: 'license'}))
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(paths.distJs));
 });
