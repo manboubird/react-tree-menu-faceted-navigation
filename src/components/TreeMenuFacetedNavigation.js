@@ -4,6 +4,7 @@ import _ from 'lodash';
 import Immutable from 'immutable';
 import TreeMenu, { TreeNode } from 'react-tree-menu';
 
+require('react-tree-menu/example/tree-view.css');
 
 class FacetNavigationManager {
 
