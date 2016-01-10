@@ -23,6 +23,8 @@ import cssnano from 'cssnano';
 import htmlReplace from 'gulp-html-replace';
 import runSequence from 'run-sequence';
 import ghPages from 'gulp-gh-pages';
+import { spawn } from 'child_process';
+
 
 const paths = {
   bundle: 'bundle.js',
@@ -141,6 +143,20 @@ gulp.task('doc',['cleanDoc'], function(cb) {
 gulp.task('deploy', function() {
   return gulp.src(paths.distDeploy)
     .pipe(ghPages());
+});
+
+gulp.task('webpackDevServer', function(cb) {
+  const logPrefix = '[webpack-dev-server] ';
+  let server = spawn('node', ['devServer.js']);
+  server.stdout.on('data', function (data) {
+    gutil.log(logPrefix + data);
+  });
+  server.stderr.on('data', function (data) {
+    gutil.log(logPrefix + data.toString('binary').replace(/\n$/, ''));
+  });
+  server.on('exit', function (data) {
+    gutil.log(logPrefix +' server is shutdowned. data = ' + data);
+  });
 });
 
 gulp.task('watch', cb => {

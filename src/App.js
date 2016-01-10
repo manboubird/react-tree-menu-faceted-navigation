@@ -1,16 +1,13 @@
-import React from 'react';
-import { render } from 'react-dom';
-import Api, { TreeMenuFacetedNavigation } from './Api';
+import React, { Component } from 'react';
+import { TreeMenuFacetedNavigation } from './Api';
 import packageJSON from '../package.json';
 import TreeDataJSON from '../example/TreeData.json';
 
 
-// cosnt ReactFragment = [ TreeMenuFacetedNavigation ];
-
 /**
  * Application component
  */
-class App extends React.Component {
+class App extends Component {
 
   constructor() {
     super();
@@ -38,5 +35,4 @@ class App extends React.Component {
   }
 }
 
-const Root = document.getElementById('content');
-render(<App />, Root);
+export default App
