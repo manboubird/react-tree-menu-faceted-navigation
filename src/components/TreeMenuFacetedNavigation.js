@@ -5,6 +5,9 @@ import Immutable from 'immutable';
 import TreeMenu, { TreeNode } from 'react-tree-menu';
 
 require('react-tree-menu/example/tree-view.css');
+require('bootstrap/dist/css/bootstrap.css');
+require('font-awesome/css/font-awesome.css');
+
 
 class FacetNavigationManager {
 

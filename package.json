@@ -17,8 +17,10 @@
     "example": "example"
   },
   "dependencies": {
-    "react-tree-menu": "1.5.0",
-    "lodash": "^3.2.0"
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0",
+    "lodash": "^3.2.0",
+    "react-tree-menu": "1.5.0"
   },
   "peerDependencies": {
     "react": ">=0.14.x"
@@ -46,6 +48,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.13.1",
     "express": "^4.13.3",
+    "file-loader": "^0.8.5",
     "fs": "0.0.2",
     "gulp": "^3.9.0",
     "gulp-esdoc": "^0.2.0",
@@ -58,10 +61,11 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
+    "html-webpack-plugin": "^1.7.0",
+    "html-webpack-template": "^2.5.2",
     "immutable": "^3.7.6",
     "invariant": "^2.2.0",
     "json-loader": "^0.5.4",
-    "lodash": "^3.10.1",
     "mocha": "^2.3.4",
     "object-assign": "^4.0.1",
     "postcss-nested": "^1.0.0",
@@ -75,6 +79,7 @@
     "rimraf": "^2.5.0",
     "run-sequence": "^1.1.5",
     "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.6.1",
