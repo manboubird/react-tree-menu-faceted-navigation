@@ -18,7 +18,7 @@
   "rules": {
     "strict": 0,
     "quotes": 0,
-    "no-console": 1,
+    "no-console": 0,
     "no-unused-vars": 0,
     "camelcase": 0,
     "no-underscore-dangle": 0 

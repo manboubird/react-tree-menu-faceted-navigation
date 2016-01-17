@@ -1,0 +1,40 @@
+{
+  "data": {
+    "meta": [
+      { "facet_id": "product", "label": "Product" },
+      { "facet_id": "large-category", "label": "Large Category" },
+      { "facet_id": "middle-category", "label": "Date" },
+      { "facet_id": "small-category", "label": "Small Category" }
+    ],
+    "items": { 
+      "A": {
+        "good": {
+          "12-03": {
+            "view": [ { "value": 4 } ]
+          }
+        },
+        "bad": {
+          "12-01": {
+            "view": [ { "value": 1 } ],
+            "imp": [ { "value": 2 } ]
+          },
+          "12-02": {
+            "view": [ { "value": 3 } ]
+          }
+        }
+      },
+      "B": {
+        "good": {
+        },
+        "bad": {
+          "12-01": {
+            "imp": [ { "value": 1 } ]
+          },
+          "12-02": {
+            "imp": [ { "value": 1 } ]
+          }
+        }
+      }
+    }
+  }
+}

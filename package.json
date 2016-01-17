@@ -88,14 +88,10 @@
     "webpack-hot-middleware": "^2.6.0"
   },
   "scripts": {
+    "build": "webpack --verbose --colors --display-error-details",
     "start": "node devServer.js",
-    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register",
+    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register ./src/**/*test.js",
     "test:watch": "npm run test -- --watch"
-  },
-  "browserify": {
-    "transform": [
-      "reactify"
-    ]
   },
   "author": "manboubird",
   "license": "MIT"

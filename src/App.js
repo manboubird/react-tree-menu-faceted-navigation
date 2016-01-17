@@ -4,6 +4,10 @@ import packageJSON from '../package.json';
 import TreeDataJSON from '../example/TreeData.json';
 
 
+require('react-tree-menu/example/tree-view.css');
+require('bootstrap/dist/css/bootstrap.css');
+require('font-awesome/css/font-awesome.css');
+
 /**
  * Application component
  */

@@ -1,83 +1,10 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import invariant from 'invariant';
 import _ from 'lodash';
 import Immutable from 'immutable';
 import TreeMenu, { TreeNode } from 'react-tree-menu';
+import FacetedNavigationManager from './FacetedNavigationManager';
 
-require('react-tree-menu/example/tree-view.css');
-require('bootstrap/dist/css/bootstrap.css');
-require('font-awesome/css/font-awesome.css');
-
-
-class FacetNavigationManager {
-
-  constructor(meta, items) {
-    let enabledCheckboxDepth = 3; // The depth shallower than this threshhold have checkbox
-    this.treeMenu = this._itemToTreeMenu(items, enabledCheckboxDepth);
-    // console.log("treeMenu", JSON.stringify(this.treeMenu, '  ', 2));
-  }
-
-  _itemToTreeMenu(items, checkboxEnabledDepth) {
-    let rootDepthCount = 1;
-    let options = {
-      checkboxEnabledDepth: checkboxEnabledDepth,
-      displayChildTotalValue: true
-    };
-    return this._createChildren(items, rootDepthCount, options);
-  }
-
-  /**
-   * Create tree menu data from facted navigation format data
-   * @param items 
-   * @param depth 
-   * @param options 
-   * @returns {*}
-   * @private
-   */
-  _createChildren(items, depth, options = {checkboxEnabledDepth: 1, displayChildTotalValue: true}) {
-    let isCheckboxEnabled = depth <= options.checkboxEnabledDepth;
-    let children = {};
-    _.forEach(items, (value, key) => {
-      if(_.isArray(value)) {
-
-        let total = _.reduce([0].concat(_.pluck(value, 'value')),
-          (total, n) => { return total + n; }
-        );
-        let label = options.displayChildTotalValue ? `${key} (${total})` : key
-        children[key] = {
-          label: label,
-          childValueTotal: total
-        };
-        if(isCheckboxEnabled) {
-          children[key]['checked'] = true;
-          children[key]['checkbox'] = true;
-        }
-
-      } else if(_.isPlainObject(value)) {
-
-        let myChild = this._createChildren(value, depth + 1, options);
-        let total = _.reduce([0].concat(_.pluck(myChild, 'childValueTotal')), 
-          (total, n) => { return total + n; }
-        );
-        let label = options.displayChildTotalValue ? `${key} (${total})` : key
-        children[key] = {
-          children: myChild,
-          label: label,
-          childValueTotal: total
-        };
-        if(isCheckboxEnabled) {
-          children[key]['checked'] = true;
-          children[key]['checkbox'] = true;
-        }
-
-      } else {
-        invariant(_.isArray(value) || _.isPlainObject(value),
-                  "Illegal items types");
-      }
-    });
-    return children;
-  }
-}
 
 /**
  * TreeMenuFacetedNavigation
@@ -97,7 +24,7 @@ class TreeMenuFacetedNavigation extends React.Component {
 
     let {meta, items} = this.props.data;
 
-    this.naviMgr = new FacetNavigationManager(meta, items);
+    this.naviMgr = new FacetedNavigationManager(meta, items);
 
     // console.log("treeMenu", JSON.stringify(this.naviMgr.treeMenu, '  ', 2));
 

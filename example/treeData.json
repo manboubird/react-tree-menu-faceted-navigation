@@ -6,10 +6,58 @@
     { "facet_id": "small-category", "panel_title": "Small Category" }
   ],
   "items": { 
+    "A": { 
+      "label": "Product A",
+      "children": { "large-1": {
+          "label": "Large Category 1",
+            "children": {
+              "label": "Middle Category 3",
+              "middle-3": {
+                "small-1": {
+                  "label": "Middle Category 3",
+                  "contents": [ { "value": 4 }, { "value": 3} ]
+                },
+                "small-2": { 
+                  "contents": [ { "value": 4 }, { "value": 3} ]
+                } 
+              }
+            }
+        },
+        "large_2": {
+          "children": {
+            "middle-1": {
+              "children": { 
+                "small-1": { 
+                  "contents": [ { "value": 2 } ]
+                },
+                "small-2": { 
+                  "contents": [ { "value": 1 }, { "value": 3 } ]
+                } 
+              }
+            }
+          },
+          "middle-2": {
+            "children": {
+              "small-2": { 
+                "contents": [ { "value": 3 } ]
+              }
+            }
+          }
+        }
+      } 
+    }
+  },
+  "oldItems": { 
     "A": {
-      "large_1": {
+      "_label": "Product A",
+      "large-1": {
+        "_label": "Large Category 1",
         "middle-3": {
-          "small-1": [],
+          "_label": "Middle Category 3",
+          "small-1": {
+            "_label": "Middle Category 3",
+            "_contents": [ { "value": 4 }, { "value": 3} ]
+          },
           "small-2": [ { "value": 4 }, { "value": 3} ]
         }
       },
@@ -24,9 +72,10 @@
       }
     },
     "B": {
-      "large_1": {
+      "_label": "Product B",
+      "large-1": {
       },
-      "large_2": {
+      "large-2": {
         "middle-1": {
           "small-1": [ { "value": 1 }, { "value": 3 } ]
         },
